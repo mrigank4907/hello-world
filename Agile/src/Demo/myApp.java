@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.NameDAO;
+import model.Name;
+
 /**
  * Servlet implementation class myApp
  */
@@ -29,7 +32,12 @@ public class myApp extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		System.out.println("Checking for name in db");
+		String name = request.getParameter("name");
+		NameDAO.instance.checkFirstName(name);
+		request.getRequestDispatcher("Index.jsp").forward(request, response);
 	}
 
 	/**
@@ -37,13 +45,18 @@ public class myApp extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter p = response.getWriter();
-		String name = request.getParameter("name");
+		//PrintWriter p = response.getWriter();
+		//String name = request.getParameter("name");
 		//normally output will be in views
-		p.println("<h3>Hello  " + name + "</h3>");
-		p.close();
+		//p.println("<h3>Hello  " + name + "</h3>");
+		//p.close();
 			
 		doGet(request, response);
+		
+		String name = request.getParameter("name");
+		Name A_Name= new Name(name);
+		NameDAO.instance.saveFirstName(A_Name);
+		request.getRequestDispatcher("Index.jsp").forward(request, response);
 	}
 
 }

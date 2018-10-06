@@ -11,7 +11,14 @@
 
 <form method="post" action="myApp">
 Enter name: <input type="test" name = "name">
-<input type="submit" value="send">
+<input type="submit" value="Send name to DB">
+</form>
+
+<br>
+<br>
+<form method="get" action="myApp">
+Enter Name:<input type="text" name="name">
+<input type="submit" value ="Check if name in DB">
 </form>
 
 </body>
