@@ -22,6 +22,6 @@ Enter Name:<input type="text" name="name">
 </form>
 
 
-<p> Eoghans  dcdsfsDFSFDF</p>
+<p> Eoghan</p>
 </body>
 </html>
